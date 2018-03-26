@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/scenes/SimplePlayerMovementScriptTest.unity
-  isLoaded: 1
-  isActive: 1
