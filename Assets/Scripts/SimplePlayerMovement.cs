@@ -6,12 +6,13 @@ using UnityEngine;
 public class SimplePlayerMovement : MonoBehaviour {
 
     public int speed = 10;
-    public float xAxis;
+    public float xAxis = 0f;
     public float jumpFactor = 20.0f;
     private bool jumpReady = false;
     public Vector2 startTouch;
     public Vector2 endTouch;
     public bool grounded;
+	public GameObject inputHandler;
     
 
 	// Use this for initialization
@@ -24,8 +25,27 @@ public class SimplePlayerMovement : MonoBehaviour {
         Move();
 	}
 
+	public void Leap(Vector2 start, Vector2 end)
+	{
+		if (grounded && start.y > end.y)
+		{
+			float thrust = Vector2.Distance(start, end) * jumpFactor;
+			Rigidbody2D physicsBody = gameObject.GetComponent<Rigidbody2D>();
+			physicsBody.AddForce((start-end).normalized * thrust);
+			grounded = false;
+		}
+	}
+
+	// I had to basically disable these controlls for the touch stuff
+	// but I figured it's probably good to keep it around for testing off android.
+	// This only works in the editor platform, but all the canvas and buttons I
+	// added eat up the jump button presses. Will fix later, but hopefully this
+	// helps keep my changes from breaking things.
     private void Move()
     {
+
+#if UNITY_EDITOR
+
         Rigidbody2D physicsBody = gameObject.GetComponent<Rigidbody2D>();
 
         // This gets the horizontal axis and applies velocity to the player's physics
@@ -49,8 +69,45 @@ public class SimplePlayerMovement : MonoBehaviour {
             float thrust = Vector2.Distance(endTouch, startTouch) * jumpFactor;
             physicsBody.AddForce((startTouch-endTouch).normalized * thrust);
             grounded = false;
+			jumpReady = false;
         }
+
+#endif
+
     }
+
+	// MoveLeft and MoveRight are called on the UI button down presses
+	public void MoveLeft()
+	{
+//		if (inputHandler.GetComponent<TouchHandling>().state == 
+//			TouchHandling.TouchState.Move)
+//		{
+			xAxis = -1.0f;
+//		}
+//		else 
+//		{
+//			xAxis = 0f;
+//		}
+	}
+
+	public void MoveRight()
+	{
+//		if (inputHandler.GetComponent<TouchHandling>().state == 
+//			TouchHandling.TouchState.Move)
+//		{
+			xAxis = 1.0f;
+//		}
+//
+//			xAxis = 0f;
+//
+	}
+
+	// Stop is called on UI button up and a few times in TouchHandling.cs
+	public void Stop()
+	{
+		xAxis = 0f;
+	}
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
