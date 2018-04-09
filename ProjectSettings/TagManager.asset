@@ -8,6 +8,7 @@ TagManager:
   - MoveArea
   - JumpRegion
   - Bullet
+  - Geometry
   - HealthBar
   layers:
   - Default
