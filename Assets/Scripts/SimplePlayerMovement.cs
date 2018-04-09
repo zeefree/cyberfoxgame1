@@ -30,7 +30,7 @@ public class SimplePlayerMovement : MonoBehaviour {
 		if (grounded && start.y > end.y)
 		{
 			float thrust = Vector2.Distance(start, end) * jumpFactor;
-			Rigidbody2D physicsBody = gameObject.GetComponent<Rigidbody2D>();
+			Rigidbody2D physicsBody = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D>();
 			physicsBody.AddForce((start-end).normalized * thrust);
 			grounded = false;
 		}
@@ -45,8 +45,8 @@ public class SimplePlayerMovement : MonoBehaviour {
     {
 
 #if UNITY_EDITOR
-
-        Rigidbody2D physicsBody = gameObject.GetComponent<Rigidbody2D>();
+		Rigidbody2D physicsBody = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D>();
+        //Rigidbody2D physicsBody = gameObject.GetComponent<Rigidbody2D>();
 
         // This gets the horizontal axis and applies velocity to the player's physics
         xAxis = Input.GetAxis("Horizontal");
