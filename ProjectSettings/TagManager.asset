@@ -8,6 +8,7 @@ TagManager:
   - MoveArea
   - JumpRegion
   - Bullet
+  - Geometry
   layers:
   - Default
   - TransparentFX

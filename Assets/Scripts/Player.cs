@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
 	private Animator anim;
+    //private SimplePlayerMovement move;
 
 	public float currentHealth;
 	public float maxHealth = 100f;
