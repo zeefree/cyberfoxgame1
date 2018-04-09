@@ -1699,6 +1699,7 @@ MonoBehaviour:
   hitText: {fileID: 324283427}
   cameraActivateDist: 160
   grounded: 0
+  healthbar: {fileID: 405281640}
 --- !u!1 &1357840155
 GameObject:
   m_ObjectHideFlags: 0
