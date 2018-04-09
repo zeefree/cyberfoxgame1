@@ -9,6 +9,7 @@ TagManager:
   - JumpRegion
   - Bullet
   - HealthBar
+  - CurrentHealth
   layers:
   - Default
   - TransparentFX
