@@ -32,7 +32,8 @@ public class Player : MonoBehaviour {
 		anim.SetFloat ("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
 
 		if (Input.GetAxis ("Horizontal") < -0.1f) {
-			
+			//this is where things need to be changed to make the health
+			//bar static and in the next if
 			transform.localScale = new Vector3 (-2, 2, 1);
 		}
 
