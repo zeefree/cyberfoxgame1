@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour {
 
 	public float smoothTimeY = 0.05f;
 	public float smoothTimeX = 0.05f;
+	public float offset = 0.05f;
 
 	public GameObject player;
 

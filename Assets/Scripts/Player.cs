@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 
 	public bool grounded;
 
-	private Rigidbody2D rb2d;
+	//private Rigidbody2D rb2d;
 	private Animator anim;
     //private SimplePlayerMovement move;
 
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	public Image healthbar;
 
 	void Start () {
-		rb2d = gameObject.GetComponent<Rigidbody2D> ();
+		//rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
 
 		currentHealth = maxHealth;
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetAxis ("Horizontal") < -0.1f) {
 			//this is where things need to be changed to make the health
 			//bar static and in the next if
+			//gameObject.GetComponent<Transform>().localScale = new Vector3(-2, 2, 1);
 			transform.localScale = new Vector3 (-2, 2, 1);
 		}
 
