@@ -28,11 +28,15 @@ public class Player : MonoBehaviour {
 		gameobject = GameObject.FindGameObjectWithTag ("CurrentHealth");
 
 		currentHealth = maxHealth;
+		anim.SetBool ("Grounded", true);
+		anim.SetBool ("WallClimbing", false);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		anim.SetBool ("Grounded", grounded);
+		//this next single line breaks the idle animation in the current context
+		//anim.SetBool ("Grounded", grounded);
+
 		anim.SetFloat ("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
 
 		if (Input.GetAxis ("Horizontal") < -0.1f) {
