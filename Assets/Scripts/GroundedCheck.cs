@@ -3,27 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundedCheck : MonoBehaviour {
-	private Player player;
-
-
+	private SimplePlayerMovement player;
 
 	// Use this for initialization
 	void Start () {
-		player = gameObject.GetComponentInParent<Player>();	
+		player = gameObject.GetComponentInParent<SimplePlayerMovement>();	
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		player.grounded = true;
+		player.state = SimplePlayerMovement.PlayerState.Ground;
 	}	
 
 	void OnTriggerExit2D(Collider2D col)
 	{
-		player.grounded = false;
-	}
+        player.state = SimplePlayerMovement.PlayerState.InAir;
+    }
 
-	void OnTriggerStay2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
 	{
-		player.grounded = true;
-	}
+        player.state = SimplePlayerMovement.PlayerState.Ground;
+    }
 }
