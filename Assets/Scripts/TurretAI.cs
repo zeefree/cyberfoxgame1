@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretAI : MonoBehaviour {
 	//integers
@@ -24,6 +25,7 @@ public class TurretAI : MonoBehaviour {
 	public Animator anim;
 	public Transform shootPointLeft;
 	public Transform shootPointRight;
+	public Image healthBar;
 
 	void Awake() {
 		anim = gameObject.GetComponent<Animator> ();

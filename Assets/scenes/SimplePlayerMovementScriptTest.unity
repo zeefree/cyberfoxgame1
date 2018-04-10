@@ -462,6 +462,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   healthbar: {fileID: 405281640}
+  gameobject: {fileID: 0}
 --- !u!1 &314595085
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +999,7 @@ GameObject:
   - component: {fileID: 405281640}
   m_Layer: 5
   m_Name: CurrentHealth
-  m_TagString: Untagged
+  m_TagString: CurrentHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1832,7 +1833,7 @@ GameObject:
   - component: {fileID: 1085234369}
   m_Layer: 5
   m_Name: HealthBar
-  m_TagString: Untagged
+  m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2103,6 +2104,7 @@ MonoBehaviour:
   playerText: {fileID: 742589434}
   cameraActivateDist: 160
   grounded: 0
+  healthbar: {fileID: 405281640}
 --- !u!1 &1357840155
 GameObject:
   m_ObjectHideFlags: 0

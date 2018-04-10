@@ -19,10 +19,13 @@ public class Player : MonoBehaviour {
 	public float maxHealth = 100f;
 
 	public Image healthbar;
+	public GameObject gameobject;
 
 	void Start () {
 		//rb2d = gameObject.GetComponent<Rigidbody2D> ();
+
 		anim = gameObject.GetComponent<Animator> ();
+		gameobject = GameObject.FindGameObjectWithTag ("CurrentHealth");
 
 		currentHealth = maxHealth;
 	}
@@ -35,12 +38,15 @@ public class Player : MonoBehaviour {
 		if (Input.GetAxis ("Horizontal") < -0.1f) {
 			//this is where things need to be changed to make the health
 			//bar static and in the next if
-			//gameObject.GetComponent<Transform>().localScale = new Vector3(-2, 2, 1);
+
 			transform.localScale = new Vector3 (-2, 2, 1);
+			healthbar.transform.localScale = new Vector3 (-1, 1, 1);
+			//gameObject.transform. = new Vector3 (1, 1, 1);
 		}
 
 		if (Input.GetAxis ("Horizontal") > 0.1f) {
 			transform.localScale = new Vector3 (2, 2, 1);
+			healthbar.transform.localScale = new Vector3 (1, 1, 1);
 		}
 
 		if (currentHealth > maxHealth) {
