@@ -1,1 +1,3 @@
 *.cs diff
+*text=auto
+*text eol=crlf
