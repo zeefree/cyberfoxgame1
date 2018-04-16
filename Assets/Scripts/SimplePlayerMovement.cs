@@ -55,6 +55,7 @@ public class SimplePlayerMovement : MonoBehaviour
              (state == PlayerState.HangingWallR && start.x < end.x) )
         {
             physicsBody.AddForce((start - end).normalized * thrust);
+            //physicsBody.velocity = (start - end).normalized * thrust;
             state = PlayerState.InAir;
 
         }
