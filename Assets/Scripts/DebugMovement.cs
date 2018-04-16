@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class DebugMovement : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public int speed = 5;
+    private Rigidbody2D r2d;
+    // Use this for initialization
+	void Start ()
+    {
+        r2d = GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+     {
+        var x = Input.GetAxis("Horizontal");
+
+        r2d.velocity = (transform.right * x * speed);
+    }
 }
