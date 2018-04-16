@@ -42,6 +42,12 @@ public class SimplePlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
+        float edX = Input.GetAxis("Horizontal");
+        if (edX != 0)
+            physicsBody.velocity = new Vector2(edX * speed, physicsBody.velocity.y);
+#endif
+            
         //Move();
     }
 
@@ -109,23 +115,23 @@ public class SimplePlayerMovement : MonoBehaviour
     {
         switch (state)
         {
-		     case PlayerState.HangingCeiling:
-		     case PlayerState.Ground:
-			    anim.SetBool ("Grounded", true);
-			    anim.SetBool ("WallClimbing", false);
+             case PlayerState.HangingCeiling:
+             case PlayerState.Ground:
+                anim.SetBool ("Grounded", true);
+                anim.SetBool ("WallClimbing", false);
                 xAxis = -1.0f;
                 break;
 
-	     	case PlayerState.HangingWallR:
-				yAxis = 1.0f;
-				anim.SetBool ("Grounded", false);
-				anim.SetBool ("WallClimbing", true);
-           		break;
+            case PlayerState.HangingWallR:
+                yAxis = 1.0f;
+                anim.SetBool ("Grounded", false);
+                anim.SetBool ("WallClimbing", true);
+                break;
 
             case PlayerState.HangingWallL:
                 yAxis = -1.0f;
-				anim.SetBool ("Grounded", false);
-				anim.SetBool ("WallClimbing", true);
+                anim.SetBool ("Grounded", false);
+                anim.SetBool ("WallClimbing", true);
                 break;
 
             case PlayerState.InAir:
@@ -141,20 +147,20 @@ public class SimplePlayerMovement : MonoBehaviour
         {
             case PlayerState.HangingCeiling:
             case PlayerState.Ground:
-				anim.SetBool ("Grounded", true);
-				anim.SetBool ("WallClimbing", false);
+                anim.SetBool ("Grounded", true);
+                anim.SetBool ("WallClimbing", false);
                 xAxis = 1.0f;
                 break;
 
             case PlayerState.HangingWallR:
-				anim.SetBool ("Grounded", false);
-				anim.SetBool ("WallClimbing", true);
+                anim.SetBool ("Grounded", false);
+                anim.SetBool ("WallClimbing", true);
                 yAxis = -1.0f;
                 break;
 
             case PlayerState.HangingWallL:
-				anim.SetBool ("Grounded", false);
-				anim.SetBool ("WallClimbing", true);
+                anim.SetBool ("Grounded", false);
+                anim.SetBool ("WallClimbing", true);
                 yAxis = 1.0f;
                 break;
 
@@ -171,7 +177,7 @@ public class SimplePlayerMovement : MonoBehaviour
     {
         xAxis = 0f;
         yAxis = 0f;
-		anim.SetBool ("Grounded", true);
+        anim.SetBool ("Grounded", true);
 
         if (state == PlayerState.HangingWallR || state == PlayerState.HangingWallL ||
             state == PlayerState.HangingCeiling)

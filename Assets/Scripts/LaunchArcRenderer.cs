@@ -14,12 +14,14 @@ public class LaunchArcRenderer : MonoBehaviour {
     float radAngle;
     float jumpFactor;
     float g;
+	Rigidbody2D rb2d;
 
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
         g = Mathf.Abs(Physics2D.gravity.y);
         jumpFactor = GetComponentInParent<SimplePlayerMovement>().jumpFactor;
+		rb2d = GetComponentInParent<Rigidbody2D>();
     }
 
     void OnValidate()
@@ -80,9 +82,9 @@ public class LaunchArcRenderer : MonoBehaviour {
     public void MakeArc(Vector2[] touches)
     {
         float thrust =  Vector2.Distance(touches[0], touches[1]) * jumpFactor;
-        Vector2 force = (touches[0] - touches[1]).normalized * thrust;
-        velocity = (( thrust / GetComponentInParent<Rigidbody2D>().mass) - 
-        GetComponentInParent<Rigidbody2D>().gravityScale * g) * Time.fixedDeltaTime;
+        //Vector2 force = (touches[0] - touches[1]).normalized * thrust;
+        velocity = (( thrust / rb2d.mass) - 
+        rb2d.gravityScale * g) * Time.fixedDeltaTime;
         //velocity = v.magnitude;
         //velocity = thrust;
         Vector2 diff = touches[0] - touches[1];
