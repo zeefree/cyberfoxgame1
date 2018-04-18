@@ -9,7 +9,8 @@ public class LaunchArcRenderer : MonoBehaviour {
 
     public float velocity;
     public float angle;
-    public int segments = 15;
+    public int segments = 0;
+    public int maxSegments = 30;
 
     float radAngle;
     float jumpFactor;
@@ -62,7 +63,7 @@ public class LaunchArcRenderer : MonoBehaviour {
             arcArray[i] = transform.position + CalculateArcPoint(t, maxDist);
             */
             arcArray[i] = pos;
-            vel += Physics2D.gravity * GetComponentInParent<Rigidbody2D>().gravityScale * Time.fixedDeltaTime;
+            vel += Physics2D.gravity * SimplePlayerMovement.GRAVITY_SCALE * Time.fixedDeltaTime;
             pos += vel * Time.fixedDeltaTime;
         }
 
@@ -91,5 +92,21 @@ public class LaunchArcRenderer : MonoBehaviour {
         float sign = (touches[0].y < touches[1].y) ? -1.0f : 1.0f;
         angle =  Vector2.Angle(Vector2.right, diff) * sign;
         RenderArc();
+    }
+
+    public void zeroSeg()
+    {
+        segments = 0;
+    }
+
+    public void clearArc()
+    {
+        lr.SetPosition(0, Vector3.zero);
+        lr.SetPosition(1, Vector3.zero);
+    }
+
+    public void maxSeg()
+    {
+        segments = maxSegments;
     }
 }

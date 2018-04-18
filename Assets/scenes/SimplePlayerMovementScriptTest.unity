@@ -222,7 +222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 5
   angle: 45
-  segments: 30
+  segments: 0
+  maxSegments: 30
 --- !u!120 &80123459
 LineRenderer:
   m_ObjectHideFlags: 0

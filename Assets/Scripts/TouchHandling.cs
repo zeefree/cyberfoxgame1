@@ -46,6 +46,8 @@ public class TouchHandling : MonoBehaviour
     public GameObject stateText;
     public GameObject hitText;
     public GameObject playerText;
+    private LaunchArcRenderer lar;
+    private LineRenderer lr;
     private float haxis;
     public float cameraActivateDist;
 
@@ -59,6 +61,7 @@ public class TouchHandling : MonoBehaviour
     // next state according to what was touched
     void NoneState()
     {
+
 #if UNITY_EDITOR
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -72,6 +75,7 @@ public class TouchHandling : MonoBehaviour
 				hitText.GetComponent<Text> ().text = hit.collider.tag;
 				state = TouchState.Jump;
 				touchPoints[0] = touch;
+                showArc();
 			}
 			else 
 			{
@@ -142,6 +146,7 @@ public class TouchHandling : MonoBehaviour
 			touchPoints [1] = touch;
 			state = TouchState.None;
 			player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+            hideArc();
 		}
         else if (Input.GetMouseButton(0))
         {
@@ -160,6 +165,7 @@ public class TouchHandling : MonoBehaviour
 			// If you make a second touch stop the Jump
 			if (touch.phase == TouchPhase.Began) {
 				state = TouchState.None;
+                hideArc();
 				break;
 
 			// Else if you end the Touch get the endpoint and make the leap
@@ -167,11 +173,13 @@ public class TouchHandling : MonoBehaviour
 				touchPoints [1] = touch.position;
 				state = TouchState.None;
 				player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+                hideArc();
 				break;
 
 			// This is in case something goes wrong
 			} else if (touch.phase == TouchPhase.Canceled) {
 				state = TouchState.None;
+                hideArc();
 				break;
 			}
             else
@@ -184,6 +192,7 @@ public class TouchHandling : MonoBehaviour
 		if (Input.touchCount == 0) {
 			hitText.GetComponent<Text> ().text = "No hit";
 			stateText.GetComponent<Text> ().text = "None";
+            hideArc();
 			state = TouchState.None;
 		}
 
@@ -334,6 +343,8 @@ public class TouchHandling : MonoBehaviour
         touchInputMask = 1 << LayerMask.NameToLayer("UI");
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
         cameraActivateDist = (float)Screen.width / 8.0f;
+        lar = player.GetComponentInChildren<LaunchArcRenderer>();
+        lr = player.GetComponentInChildren<LineRenderer>();
     }
 
     // All the Update function has is a simple switch for the states
@@ -371,5 +382,17 @@ public class TouchHandling : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void hideArc()
+    {
+        lr.enabled = false;
+        lar.zeroSeg();
+    }
+
+    public void showArc()
+    {
+        lar.maxSeg();
+        lr.enabled = true;
     }
 }
