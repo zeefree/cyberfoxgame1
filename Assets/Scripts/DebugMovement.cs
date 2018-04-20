@@ -15,7 +15,31 @@ public class DebugMovement : MonoBehaviour {
 	void Update ()
      {
         var x = Input.GetAxis("Horizontal");
+        if(x != 0)
+        {
+            r2d.velocity = (transform.right * x * speed);
+        }
+       
+    }
 
-        r2d.velocity = (transform.right * x * speed);
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        
+        if (coll.gameObject.tag == "Stairs")
+        {
+            
+            Stairs well = coll.gameObject.GetComponent<Stairs>();
+            float up_input = Input.GetAxis("Vertical");
+
+            Debug.Log("Vert input value " + up_input);
+            if(up_input > 0)
+            {
+                well.SendOnStairs(this.gameObject, 'u');
+            }
+            else if(up_input < 0)
+            {
+                well.SendOnStairs(this.gameObject, 'd');
+            }
+        }
     }
 }
