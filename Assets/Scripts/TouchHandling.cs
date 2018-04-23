@@ -46,6 +46,7 @@ public class TouchHandling : MonoBehaviour
     public GameObject stateText;
     public GameObject hitText;
     public GameObject playerText;
+    private LaunchArcRenderer lar;
     private float haxis;
     public float cameraActivateDist;
 
@@ -59,8 +60,10 @@ public class TouchHandling : MonoBehaviour
     // next state according to what was touched
     void NoneState()
     {
+        stateText.GetComponent<Text>().text = "None";
+
 #if UNITY_EDITOR
-		if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
 		{
 			Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			Vector3 v3 = Camera.main.ScreenToWorldPoint (touch);
@@ -82,9 +85,7 @@ public class TouchHandling : MonoBehaviour
 		}
 #endif
 
-
-        stateText.GetComponent<Text>().text = "None";
-
+#if UNITY_ANDROID
         // Basically the same for all of these, we need to loop through the touches
         for (int i = 0; i < Input.touchCount; i++)
         {
@@ -126,7 +127,9 @@ public class TouchHandling : MonoBehaviour
             hitText.GetComponent<Text>().text = "No hit";
             stateText.GetComponent<Text>().text = "None";
         }
+#endif
     }
+
 
     // Jump State, basically the mouse code from Simple Player movement,
     // adapted for touch.
@@ -142,6 +145,7 @@ public class TouchHandling : MonoBehaviour
 			touchPoints [1] = touch;
 			state = TouchState.None;
 			player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+            hideArc();
 		}
         else if (Input.GetMouseButton(0))
         {
@@ -160,6 +164,7 @@ public class TouchHandling : MonoBehaviour
 			// If you make a second touch stop the Jump
 			if (touch.phase == TouchPhase.Began) {
 				state = TouchState.None;
+                hideArc();
 				break;
 
 			// Else if you end the Touch get the endpoint and make the leap
@@ -167,11 +172,13 @@ public class TouchHandling : MonoBehaviour
 				touchPoints [1] = touch.position;
 				state = TouchState.None;
 				player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+                hideArc();
 				break;
 
 			// This is in case something goes wrong
 			} else if (touch.phase == TouchPhase.Canceled) {
 				state = TouchState.None;
+                hideArc();
 				break;
 			}
             else
@@ -184,6 +191,7 @@ public class TouchHandling : MonoBehaviour
 		if (Input.touchCount == 0) {
 			hitText.GetComponent<Text> ().text = "No hit";
 			stateText.GetComponent<Text> ().text = "None";
+            hideArc();
 			state = TouchState.None;
 		}
 
@@ -203,9 +211,7 @@ public class TouchHandling : MonoBehaviour
 
 		if (Input.GetMouseButton(0))
 		{
-			Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-			player.GetComponent<SimplePlayerMovement>().Move();
-
+			//Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			var s = player.GetComponent<SimplePlayerMovement>();
 
 			//Chase's new lines begin
@@ -227,7 +233,6 @@ public class TouchHandling : MonoBehaviour
 		else
 		{
 			state = TouchState.None;
-			player.GetComponent<SimplePlayerMovement> ().Stop ();
 		}
 
 #endif
@@ -259,15 +264,12 @@ public class TouchHandling : MonoBehaviour
 			// Check if you are ending the last remaining touch.
 			} else if (touch.phase == TouchPhase.Ended && Input.touchCount == 1) {
 				state = TouchState.None;
-				player.GetComponent<SimplePlayerMovement> ().Stop ();
 				break;
 
 			// This bit moves the player on the horizontal axis while you are touching
 			// the ui buttons that set the axis value.
 			} else if ((touch.phase == TouchPhase.Moved ||
 			           touch.phase == TouchPhase.Stationary) && Input.touchCount == 1) {
-
-                player.GetComponent<SimplePlayerMovement>().Move();
 
 				var s = player.GetComponent<SimplePlayerMovement>();
 
@@ -334,6 +336,7 @@ public class TouchHandling : MonoBehaviour
         touchInputMask = 1 << LayerMask.NameToLayer("UI");
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
         cameraActivateDist = (float)Screen.width / 8.0f;
+        lar = player.GetComponentInChildren<LaunchArcRenderer>();
     }
 
     // All the Update function has is a simple switch for the states
@@ -372,4 +375,11 @@ public class TouchHandling : MonoBehaviour
                 break;
         }
     }
+
+    public void hideArc()
+    {
+        lar.clearArc();
+    }
+
+
 }
