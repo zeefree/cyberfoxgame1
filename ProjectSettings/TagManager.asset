@@ -11,6 +11,7 @@ TagManager:
   - Geometry
   - HealthBar
   - CurrentHealth
+  - Stairs
   layers:
   - Default
   - TransparentFX
@@ -20,11 +21,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Background
+  - Walls
+  - Sprite Backdrop
+  - Player and AI
   - 
   - 
   - 
