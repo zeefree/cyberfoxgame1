@@ -49,6 +49,7 @@ public class TouchHandling : MonoBehaviour
     private LaunchArcRenderer lar;
     private float haxis;
     public float cameraActivateDist;
+    public float jumpActivateDist;
 
     //Chase's new lines begin
     private Rigidbody2D rb2d;
@@ -144,14 +145,20 @@ public class TouchHandling : MonoBehaviour
 			Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			touchPoints [1] = touch;
 			state = TouchState.None;
-			player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+
+            if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+			    player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+
             hideArc();
 		}
         else if (Input.GetMouseButton(0))
         {
             Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             touchPoints[1] = touch;
-            player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+            if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+                player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+            else
+                hideArc();
         }
 
 #endif
@@ -171,7 +178,9 @@ public class TouchHandling : MonoBehaviour
 			} else if (touch.phase == TouchPhase.Ended) {
 				touchPoints [1] = touch.position;
 				state = TouchState.None;
-				player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+                if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+				    player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+                
                 hideArc();
 				break;
 
@@ -184,7 +193,11 @@ public class TouchHandling : MonoBehaviour
             else
             {
                 touchPoints[1] = touch.position;
-                player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+                
+                if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+                    player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+                else
+                    hideArc();
             }
 		}
 

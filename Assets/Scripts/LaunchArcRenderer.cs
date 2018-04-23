@@ -11,6 +11,7 @@ public class LaunchArcRenderer : MonoBehaviour {
     public int segments = 30;
     float radAngle;
     float jumpFactor;
+    float maxJump;
     float g;
 	Rigidbody2D rb2d;
 
@@ -20,6 +21,7 @@ public class LaunchArcRenderer : MonoBehaviour {
         lr = GetComponent<LineRenderer>();
         g = Mathf.Abs(Physics2D.gravity.y);
         jumpFactor = GetComponentInParent<SimplePlayerMovement>().jumpFactor;
+        maxJump = GetComponentInParent<SimplePlayerMovement>().maxJump;
 		rb2d = GetComponentInParent<Rigidbody2D>();
     }
 
@@ -76,10 +78,12 @@ public class LaunchArcRenderer : MonoBehaviour {
     {
         // This gets the initial velocity and set's the velocity
         float thrust =  Vector2.Distance(touches[0], touches[1]) * jumpFactor;
+        thrust = Mathf.Clamp(thrust, 0.0f, maxJump);
+    
         velocity = (( thrust / rb2d.mass) - 
             rb2d.gravityScale * g) * Time.fixedDeltaTime;
         
-        //basicall getting the corrected angle
+        //basically getting the corrected angle
         Vector2 diff = touches[0] - touches[1];
         float sign = (touches[0].y < touches[1].y) ? -1.0f : 1.0f;
         angle =  Vector2.Angle(Vector2.right, diff) * sign;
