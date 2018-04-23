@@ -6,6 +6,8 @@ public class DebugMovement : MonoBehaviour {
 
 	public int speed = 5;
     private Rigidbody2D r2d;
+    private float _up_input;
+
     // Use this for initialization
 	void Start ()
     {
@@ -19,27 +21,27 @@ public class DebugMovement : MonoBehaviour {
         {
             r2d.velocity = (transform.right * x * speed);
         }
-       
-    }
+        float up_input = Input.GetAxis("Vertical");
 
-    void OnCollisionStay2D(Collision2D coll)
-    {
+        _up_input = up_input;
         
-        if (coll.gameObject.tag == "Stairs")
-        {
-            
-            Stairs well = coll.gameObject.GetComponent<Stairs>();
-            float up_input = Input.GetAxis("Vertical");
-
-            Debug.Log("Vert input value " + up_input);
-            if(up_input > 0)
-            {
-                well.SendOnStairs(this.gameObject, 'u');
-            }
-            else if(up_input < 0)
-            {
-                well.SendOnStairs(this.gameObject, 'd');
-            }
-        }
     }
+
+    void stairsHere(GameObject coll_stairs)
+    {
+        Stairs stair = coll_stairs.GetComponent<Stairs>();
+
+        if (_up_input > 0)
+         {
+              stair.SendOnStairs(this.gameObject, 'u');
+         }
+         else if (_up_input < 0)
+         {
+             stair.SendOnStairs(this.gameObject, 'd');
+             Debug.Log("Send down");
+          }
+        
+
+    }
+  
 }
