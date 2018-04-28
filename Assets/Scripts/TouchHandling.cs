@@ -49,7 +49,11 @@ public class TouchHandling : MonoBehaviour
     private LaunchArcRenderer lar;
     private float haxis;
     public float cameraActivateDist;
+
+    private float dragDistance = 100f; //Distance required to drag for it to count as a drag
+
     public float jumpActivateDist;
+
 
     //Chase's new lines begin
     private Rigidbody2D rb2d;
@@ -277,7 +281,28 @@ public class TouchHandling : MonoBehaviour
 			// Check if you are ending the last remaining touch.
 			} else if (touch.phase == TouchPhase.Ended && Input.touchCount == 1) {
 				state = TouchState.None;
-				break;
+                touchPoints[1] = touch.position;
+
+                float point_dif = (touchPoints[0].y - touchPoints[1].y); //take the differnce between the start point and our end point
+
+                if (Mathf.Abs(point_dif) >= dragDistance)
+                {
+
+                    Player the_player = player.GetComponent<Player>();
+                    //Now it should be a swipe
+                    if (point_dif < 0)
+                    {
+                        the_player.stair_direction = 'u';
+                    }
+                    else if (point_dif > 0)
+                    {
+                        the_player.stair_direction = 'd';
+                    }
+                    hitText.GetComponent<Text>().text = "direction " + the_player.stair_direction;
+                    //The player will reset the stair_direction itself
+                }
+
+                break;
 
 			// This bit moves the player on the horizontal axis while you are touching
 			// the ui buttons that set the axis value.
@@ -286,8 +311,10 @@ public class TouchHandling : MonoBehaviour
 
 				var s = player.GetComponent<SimplePlayerMovement>();
 
-				//Chase's new lines begin
-				anim = player.GetComponent<Animator>();
+                player.GetComponent<Player>().stair_direction = 'n'; //Make sure the player doesn't think it needs to go in any sort of direction while moving
+
+                //Chase's new lines begin
+                anim = player.GetComponent<Animator>();
 				grounded = true;
 				anim.SetBool ("Grounded", grounded);
 				anim.SetFloat ("Speed", Mathf.Abs(s.xAxis * s.speed));
@@ -300,7 +327,8 @@ public class TouchHandling : MonoBehaviour
                     //player.transform.localScale =  new Vector3 (2, 2, 1);
                     player.GetComponent<SpriteRenderer>().flipX = false;
 				}
-				//Chase's new lines end
+                //Chase's new lines end
+                //Need to store the point that we touched so I can make a comparison when we let go
                 
 
             }
@@ -311,6 +339,12 @@ public class TouchHandling : MonoBehaviour
 			stateText.GetComponent<Text> ().text = "None";
 			player.GetComponent<SimplePlayerMovement> ().xAxis = 0f;
 			state = TouchState.None;
+
+
+            
+
+
+            
 		}
 
 #endif
@@ -350,6 +384,7 @@ public class TouchHandling : MonoBehaviour
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
         cameraActivateDist = (float)Screen.width / 8.0f;
         lar = player.GetComponentInChildren<LaunchArcRenderer>();
+        dragDistance = Screen.height * (25 / 100);
     }
 
     // All the Update function has is a simple switch for the states

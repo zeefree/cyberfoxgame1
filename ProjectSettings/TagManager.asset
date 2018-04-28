@@ -22,10 +22,11 @@ TagManager:
   - 
   - 
   - Ground
-  - Background
+  - 
   - Walls
-  - Sprite Backdrop
+  - 
   - Player and AI
+  - Sprite Backdrop
   - 
   - 
   - 
@@ -43,8 +44,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Background
   m_SortingLayers:
   - name: Default
     uniqueID: 0
