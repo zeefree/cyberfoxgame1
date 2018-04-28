@@ -14,23 +14,31 @@ public class GroundedCheck : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		anim.SetBool ("Grounded", true);
-		player.state = SimplePlayerMovement.PlayerState.Ground;
-
+        if (col.gameObject.tag == "Geometry")
+        {
+            anim.SetBool("Grounded", true);
+            player.state = SimplePlayerMovement.PlayerState.Ground;
+        }
 
 	}	
 
 	void OnTriggerExit2D(Collider2D col)
 	{
-		anim.SetBool ("Grounded", false);
-        player.state = SimplePlayerMovement.PlayerState.InAir;
+        if (col.gameObject.tag == "Geometry")
+        {
+            anim.SetBool("Grounded", false);
+            player.state = SimplePlayerMovement.PlayerState.InAir;
+        }
 
     }
 
     void OnTriggerStay2D(Collider2D col)
 	{
-		anim.SetBool ("Grounded", true);
-        player.state = SimplePlayerMovement.PlayerState.Ground;
+        if (col.gameObject.tag == "Geometry")
+        {
+            anim.SetBool("Grounded", true);
+            player.state = SimplePlayerMovement.PlayerState.Ground;
+        }
 	
     }
 }

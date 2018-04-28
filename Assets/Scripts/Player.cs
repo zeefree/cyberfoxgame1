@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 	public float currentHealth;
 	public float maxHealth = 100f;
 
+    public char stair_direction;
+
 	public Image healthbar;
 	public GameObject gameobject;
 
@@ -72,5 +74,15 @@ public class Player : MonoBehaviour {
 
 		healthbar.fillAmount = currentHealth / maxHealth;
 	}
+
+    void stairsHere(GameObject collided_stairs)
+    {
+        if(stair_direction == 'u' || stair_direction =='d')
+        {
+            Stairs stair = collided_stairs.GetComponent<Stairs>();
+            stair.SendOnStairs(this.gameObject, stair_direction);
+        }
+        stair_direction = 'n';
+    }
 		
 }

@@ -46,8 +46,14 @@ public class TouchHandling : MonoBehaviour
     public GameObject stateText;
     public GameObject hitText;
     public GameObject playerText;
+    private LaunchArcRenderer lar;
     private float haxis;
     public float cameraActivateDist;
+
+    private float dragDistance = 100f; //Distance required to drag for it to count as a drag
+
+    public float jumpActivateDist;
+
 
     //Chase's new lines begin
     private Rigidbody2D rb2d;
@@ -59,8 +65,10 @@ public class TouchHandling : MonoBehaviour
     // next state according to what was touched
     void NoneState()
     {
+        stateText.GetComponent<Text>().text = "None";
+
 #if UNITY_EDITOR
-		if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
 		{
 			Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			Vector3 v3 = Camera.main.ScreenToWorldPoint (touch);
@@ -82,9 +90,7 @@ public class TouchHandling : MonoBehaviour
 		}
 #endif
 
-
-        stateText.GetComponent<Text>().text = "None";
-
+#if UNITY_ANDROID
         // Basically the same for all of these, we need to loop through the touches
         for (int i = 0; i < Input.touchCount; i++)
         {
@@ -126,7 +132,9 @@ public class TouchHandling : MonoBehaviour
             hitText.GetComponent<Text>().text = "No hit";
             stateText.GetComponent<Text>().text = "None";
         }
+#endif
     }
+
 
     // Jump State, basically the mouse code from Simple Player movement,
     // adapted for touch.
@@ -141,13 +149,20 @@ public class TouchHandling : MonoBehaviour
 			Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			touchPoints [1] = touch;
 			state = TouchState.None;
-			player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+
+            if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+			    player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+
+            hideArc();
 		}
         else if (Input.GetMouseButton(0))
         {
             Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             touchPoints[1] = touch;
-            player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+            if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+                player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+            else
+                hideArc();
         }
 
 #endif
@@ -160,30 +175,40 @@ public class TouchHandling : MonoBehaviour
 			// If you make a second touch stop the Jump
 			if (touch.phase == TouchPhase.Began) {
 				state = TouchState.None;
+                hideArc();
 				break;
 
 			// Else if you end the Touch get the endpoint and make the leap
 			} else if (touch.phase == TouchPhase.Ended) {
 				touchPoints [1] = touch.position;
 				state = TouchState.None;
-				player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+                if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+				    player.GetComponent<SimplePlayerMovement>().Leap (touchPoints [0], touchPoints [1]);
+                
+                hideArc();
 				break;
 
 			// This is in case something goes wrong
 			} else if (touch.phase == TouchPhase.Canceled) {
 				state = TouchState.None;
+                hideArc();
 				break;
 			}
             else
             {
                 touchPoints[1] = touch.position;
-                player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+                
+                if (Vector2.Distance(touchPoints[0], touchPoints[1]) > jumpActivateDist)
+                    player.GetComponentInChildren<LaunchArcRenderer>().MakeArc(touchPoints);
+                else
+                    hideArc();
             }
 		}
 
 		if (Input.touchCount == 0) {
 			hitText.GetComponent<Text> ().text = "No hit";
 			stateText.GetComponent<Text> ().text = "None";
+            hideArc();
 			state = TouchState.None;
 		}
 
@@ -203,9 +228,7 @@ public class TouchHandling : MonoBehaviour
 
 		if (Input.GetMouseButton(0))
 		{
-			Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-			player.GetComponent<SimplePlayerMovement>().Move();
-
+			//Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			var s = player.GetComponent<SimplePlayerMovement>();
 
 			//Chase's new lines begin
@@ -227,7 +250,6 @@ public class TouchHandling : MonoBehaviour
 		else
 		{
 			state = TouchState.None;
-			player.GetComponent<SimplePlayerMovement> ().Stop ();
 		}
 
 #endif
@@ -259,20 +281,40 @@ public class TouchHandling : MonoBehaviour
 			// Check if you are ending the last remaining touch.
 			} else if (touch.phase == TouchPhase.Ended && Input.touchCount == 1) {
 				state = TouchState.None;
-				player.GetComponent<SimplePlayerMovement> ().Stop ();
-				break;
+                touchPoints[1] = touch.position;
+
+                float point_dif = (touchPoints[0].y - touchPoints[1].y); //take the differnce between the start point and our end point
+
+                if (Mathf.Abs(point_dif) >= dragDistance)
+                {
+
+                    Player the_player = player.GetComponent<Player>();
+                    //Now it should be a swipe
+                    if (point_dif < 0)
+                    {
+                        the_player.stair_direction = 'u';
+                    }
+                    else if (point_dif > 0)
+                    {
+                        the_player.stair_direction = 'd';
+                    }
+                   
+                    //The player will reset the stair_direction itself
+                }
+
+                break;
 
 			// This bit moves the player on the horizontal axis while you are touching
 			// the ui buttons that set the axis value.
 			} else if ((touch.phase == TouchPhase.Moved ||
 			           touch.phase == TouchPhase.Stationary) && Input.touchCount == 1) {
 
-                player.GetComponent<SimplePlayerMovement>().Move();
-
 				var s = player.GetComponent<SimplePlayerMovement>();
 
-				//Chase's new lines begin
-				anim = player.GetComponent<Animator>();
+                player.GetComponent<Player>().stair_direction = 'n'; //Make sure the player doesn't think it needs to go in any sort of direction while moving
+
+                //Chase's new lines begin
+                anim = player.GetComponent<Animator>();
 				grounded = true;
 				anim.SetBool ("Grounded", grounded);
 				anim.SetFloat ("Speed", Mathf.Abs(s.xAxis * s.speed));
@@ -285,7 +327,8 @@ public class TouchHandling : MonoBehaviour
                     //player.transform.localScale =  new Vector3 (2, 2, 1);
                     player.GetComponent<SpriteRenderer>().flipX = false;
 				}
-				//Chase's new lines end
+                //Chase's new lines end
+                //Need to store the point that we touched so I can make a comparison when we let go
                 
 
             }
@@ -296,6 +339,12 @@ public class TouchHandling : MonoBehaviour
 			stateText.GetComponent<Text> ().text = "None";
 			player.GetComponent<SimplePlayerMovement> ().xAxis = 0f;
 			state = TouchState.None;
+
+
+            
+
+
+            
 		}
 
 #endif
@@ -334,6 +383,8 @@ public class TouchHandling : MonoBehaviour
         touchInputMask = 1 << LayerMask.NameToLayer("UI");
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
         cameraActivateDist = (float)Screen.width / 8.0f;
+        lar = player.GetComponentInChildren<LaunchArcRenderer>();
+        dragDistance = 200f;
     }
 
     // All the Update function has is a simple switch for the states
@@ -372,4 +423,11 @@ public class TouchHandling : MonoBehaviour
                 break;
         }
     }
+
+    public void hideArc()
+    {
+        lar.clearArc();
+    }
+
+
 }
