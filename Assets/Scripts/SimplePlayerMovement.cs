@@ -57,6 +57,7 @@ public class SimplePlayerMovement : MonoBehaviour
 
         // These checks basically keep the player from jumping into the 
         // walls /ground and getting stuck
+    
         if ( (state == PlayerState.Ground && start.y > end.y) ||
              (state == PlayerState.HangingCeiling && start.y < end.y) ||
              (state == PlayerState.HangingWallL && start.x > end.x) ||

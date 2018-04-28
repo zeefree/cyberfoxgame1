@@ -298,7 +298,7 @@ public class TouchHandling : MonoBehaviour
                     {
                         the_player.stair_direction = 'd';
                     }
-                    hitText.GetComponent<Text>().text = "direction " + the_player.stair_direction;
+                   
                     //The player will reset the stair_direction itself
                 }
 
@@ -384,7 +384,7 @@ public class TouchHandling : MonoBehaviour
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
         cameraActivateDist = (float)Screen.width / 8.0f;
         lar = player.GetComponentInChildren<LaunchArcRenderer>();
-        dragDistance = Screen.height * (25 / 100);
+        dragDistance = 200f;
     }
 
     // All the Update function has is a simple switch for the states
