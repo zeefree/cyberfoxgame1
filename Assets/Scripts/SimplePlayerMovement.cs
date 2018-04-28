@@ -20,6 +20,7 @@ public class SimplePlayerMovement : MonoBehaviour
     public float xAxis = 0f;
     public float yAxis = 0f;
     public float jumpFactor = 20.0f;
+    public float maxJump = 100000.0f;
     public GameObject inputHandler;
     public PlayerState state;
     private Animator anim;
@@ -27,11 +28,12 @@ public class SimplePlayerMovement : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         state = PlayerState.Ground;
         physicsBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
+        inputHandler = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class SimplePlayerMovement : MonoBehaviour
     public void Leap(Vector2 start, Vector2 end)
     {
         float thrust = Vector2.Distance(start, end) * jumpFactor;
+        thrust = Mathf.Clamp(thrust, 0.0f, maxJump);
 
         // These checks basically keep the player from jumping into the 
         // walls /ground and getting stuck
