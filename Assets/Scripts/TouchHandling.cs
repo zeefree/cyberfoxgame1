@@ -384,7 +384,7 @@ public class TouchHandling : MonoBehaviour
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
         cameraActivateDist = (float)Screen.width / 8.0f;
         lar = player.GetComponentInChildren<LaunchArcRenderer>();
-        dragDistance = Screen.height * (15 / 100);
+        dragDistance = 200f;
     }
 
     // All the Update function has is a simple switch for the states
