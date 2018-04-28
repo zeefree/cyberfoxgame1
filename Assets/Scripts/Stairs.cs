@@ -25,7 +25,11 @@ public class Stairs : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        collision.gameObject.SendMessage("stairsHere", this.gameObject);
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Guard")
+        {
+            collision.gameObject.SendMessage("stairsHere", this.gameObject);
+        }
+        
     }
 
     void PlaceSprite(GameObject to_move) //Recieving the placement
