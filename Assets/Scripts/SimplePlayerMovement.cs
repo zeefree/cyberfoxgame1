@@ -26,6 +26,7 @@ public class SimplePlayerMovement : MonoBehaviour
     private Animator anim;
     private Rigidbody2D physicsBody;
     private GameObject hangingObject;
+    private List<string> items;
 
 
     // Use this for initialization
@@ -35,6 +36,7 @@ public class SimplePlayerMovement : MonoBehaviour
         physicsBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         inputHandler = GameObject.Find("Canvas");
+        items = new List<string>();
     }
 
     // Update is called once per frame
@@ -164,6 +166,14 @@ public class SimplePlayerMovement : MonoBehaviour
         else if (col.gameObject.tag == "VGlass" && state == PlayerState.InAir)
         {
             Destroy(col.gameObject);
+        }
+    }
+
+    public void OnTriggerEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Pickup")
+        {
+            items.Add(col.gameObject.name);
         }
     }
 

@@ -12,6 +12,8 @@ TagManager:
   - HealthBar
   - CurrentHealth
   - Stairs
+  - VGlass
+  - Pickup
   layers:
   - Default
   - TransparentFX
