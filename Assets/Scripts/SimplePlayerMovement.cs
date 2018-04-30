@@ -155,4 +155,16 @@ public class SimplePlayerMovement : MonoBehaviour
     
     }
 
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Gaurd" && state == PlayerState.InAir)
+        {
+            //col.gameObject.Death();
+        }
+        else if (col.gameObject.tag == "VGlass" && state == PlayerState.InAir)
+        {
+            Destroy(col.gameObject);
+        }
+    }
+
 }
