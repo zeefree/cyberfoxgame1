@@ -40,6 +40,8 @@ public class TouchHandling : MonoBehaviour
     };
 
     public float zoomSpeed = 0.1f;
+    public float zoomInCap = 5f;
+    public float zoomOutCap = 40f;
     public Camera camera;
     private int touchInputMask;
     public TouchState state;
@@ -178,6 +180,7 @@ public class TouchHandling : MonoBehaviour
 			if (touch.phase == TouchPhase.Began) {
 				state = TouchState.None;
                 hideArc();
+                
 				break;
 
 			// Else if you end the Touch get the endpoint and make the leap
@@ -383,8 +386,12 @@ public class TouchHandling : MonoBehaviour
             camera.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
 
 
-            camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
-
+            camera.orthographicSize = Mathf.Max(camera.orthographicSize, zoomInCap);
+          
+            if(camera.orthographicSize >= zoomOutCap)
+            {
+                camera.orthographicSize = Mathf.Min(camera.orthographicSize, zoomOutCap);
+            }
         }
 
         for (int i = 0; i < Input.touchCount && Input.touchCount == 2; i++)
