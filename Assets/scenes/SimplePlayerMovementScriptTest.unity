@@ -2229,7 +2229,9 @@ MonoBehaviour:
   - WallL
   - WallR
   - Ceiling
-  zoomSpeed: 0.5
+  zoomSpeed: 0.1
+  zoomInCap: 5
+  zoomOutCap: 40
   camera: {fileID: 1940861645}
   state: 0
   player: {fileID: 220224374}
