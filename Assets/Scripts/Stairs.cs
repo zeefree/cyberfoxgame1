@@ -14,13 +14,6 @@ public class Stairs : MonoBehaviour {
 	void Start ()
     {
         groundY = FindGround();
-        Debug.Log("Ground found at " + groundY);
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -29,13 +22,21 @@ public class Stairs : MonoBehaviour {
         {
             collision.gameObject.SendMessage("stairsHere", this.gameObject);
         }
-        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Guard")
+        {
+            collision.gameObject.SendMessage("stairsHere", this.gameObject);
+        }
     }
 
     void PlaceSprite(GameObject to_move) //Recieving the placement
     {
         SpriteRenderer object_sprite = to_move.GetComponent<SpriteRenderer>();
-        float sprite_bottom = object_sprite.bounds.extents.y; //Gets y of bottom part of sprite
+        float sprite_bottom = object_sprite.bounds.extents.y; //Gets the distance from the bottom part of the sprite to center
+        
 
         to_move.transform.position = new Vector3(transform.position.x, (groundY + sprite_bottom));
     }
@@ -55,7 +56,7 @@ public class Stairs : MonoBehaviour {
             if(bottomStairs != null)
             {
                 bottomStairs.PlaceSprite(to_move);
-                Debug.Log("Sending Down");
+                
             }
            
         }
@@ -70,8 +71,10 @@ public class Stairs : MonoBehaviour {
         if (hit.collider != null) //It shouldn't be null but who knows, should be a safe bet
         {
             ground_y = hit.point.y;
-            
-            
+        }
+        else
+        {
+            ground_y = transform.position.y;
         }
        return ground_y;
     }

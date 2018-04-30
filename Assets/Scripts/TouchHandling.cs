@@ -39,6 +39,8 @@ public class TouchHandling : MonoBehaviour
         "Ceiling"
     };
 
+    public float zoomSpeed = 0.1f;
+    public Camera camera;
     private int touchInputMask;
     public TouchState state;
     private Vector2[] touchPoints;
@@ -361,11 +363,40 @@ public class TouchHandling : MonoBehaviour
     {
         stateText.GetComponent<Text>().text = "Camera";
 
-        for (int i = 0; i < Input.touchCount && Input.touchCount == 2; i++)
+
+
+        if (Input.touchCount == 2)
         {
-            Touch touch = Input.touches[i];
-            touchPoints[i] = touch.position;
+            //Store the two touches
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+            //Get prvious positions
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            //Get magintudes of those differneces
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            camera.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
+
+
+            camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+
         }
+
+        for (int i = 0; i < Input.touchCount && Input.touchCount == 2; i++)
+            {
+                Touch touch = Input.touches[i];
+                touchPoints[i] = touch.position;
+            }
+
+
+        
+     
+
 
         // Go back to None State when you don't have exactly two fingers touching
         if (Input.touchCount != 2)
@@ -382,7 +413,7 @@ public class TouchHandling : MonoBehaviour
         state = TouchState.None;
         touchInputMask = 1 << LayerMask.NameToLayer("UI");
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
-        cameraActivateDist = (float)Screen.width / 8.0f;
+        cameraActivateDist = (float)Screen.width / 2.5f;
         lar = player.GetComponentInChildren<LaunchArcRenderer>();
         dragDistance = 200f;
     }
@@ -401,7 +432,10 @@ public class TouchHandling : MonoBehaviour
         //anim = player.GetComponent<Animator>();
         //anim.SetFloat ("Speed", Mathf.Abs(s.xAxis * s.speed));
 
-        switch (state)
+    
+
+
+            switch (state)
         {
             case TouchState.None:
                 NoneState();
