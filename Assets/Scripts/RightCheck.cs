@@ -26,6 +26,10 @@ public class RightCheck : MonoBehaviour
 			anim.SetBool ("Grounded", false);
 			anim.SetBool ("WallClimbing", true);
         }
+        else if (col.gameObject.tag == "VGlass" && player.state == SimplePlayerMovement.PlayerState.InAir)
+        {
+            Destroy(col.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D col)
