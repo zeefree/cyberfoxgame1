@@ -25,6 +25,7 @@ public class SimplePlayerMovement : MonoBehaviour
     public PlayerState state;
     private Animator anim;
     private Rigidbody2D physicsBody;
+    private GameObject hangingObject;
 
 
     // Use this for initialization
