@@ -1,71 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TurretAI : MonoBehaviour {
-	//integers
-	public int currentHealth;
-	public int maxHealth;
-
-	//floats
-	public float distance;
-	public float wakeRange;
-	public float shootInterval;
-	public float bulletSpeed = 10;
+public class GuardMovement1 : MonoBehaviour {
 	public float bulletTimer;
+	public float bulletSpeed = 10;
+	public float speed;
+	public float shootInterval;
+	private bool movingRight = true;
 
-	//booleans
-	public bool awake = false;
-	public bool lookingRight;
+	public Transform groundDetection;
 
 	//references
-	public GameObject bullet;
-	public Transform target;
-	public Animator anim;
 	public Transform shootPointLeft;
 	public Transform shootPointRight;
-	public Image healthBar;
-
-	void Awake() {
-		anim = gameObject.GetComponent<Animator> ();
-	}
+	public Transform target;
+	public GameObject bullet;
+	public GameObject leftCone;
+	public GameObject rightCone;
 
 	// Use this for initialization
 	void Start () {
-		currentHealth = maxHealth;	
-		wakeRange = 26;
 		shootInterval = 0.2f;
-
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		anim.SetBool ("Awake", awake);
-		anim.SetBool ("LookingRight", lookingRight);
+		transform.Translate (Vector2.right * speed * Time.deltaTime);
 
-		RangeCheck ();
-
-		if (target.transform.position.x > transform.position.x) {
-			lookingRight = true;
-		}
-		if (target.transform.position.x < transform.position.x) {
-			lookingRight = false;
-		}
-	}
-
-	void RangeCheck() {
-		distance = Vector3.Distance (transform.position, target.transform.position);
-
-		if (distance < wakeRange) {
-			awake = true;
-		}
-
-		if (distance > wakeRange) {
-			awake = false;
+		RaycastHit2D groundInfo = Physics2D.Raycast (groundDetection.position, Vector2.right, 4f);
+		if (groundInfo.collider == true) {
+			if (movingRight == true) {
+				transform.eulerAngles = new Vector3 (0, -180, 0);
+				movingRight = false;
+			} else {
+				transform.eulerAngles = new Vector3 (0, 0, 0);
+				movingRight = true;
+			}
 		}
 	}
-
 
 	public void attack(bool attackingRight) {
 		bulletTimer += Time.deltaTime;
@@ -79,7 +52,6 @@ public class TurretAI : MonoBehaviour {
 				bulletClone = Instantiate (bullet, shootPointLeft.transform.position, shootPointLeft.transform.rotation) as GameObject;
 				bulletClone.GetComponent<Rigidbody2D> ().velocity = direction * bulletSpeed;
 				Debug.Log ("Attacking");
-
 				bulletTimer = 0;
 			}
 
@@ -87,7 +59,7 @@ public class TurretAI : MonoBehaviour {
 				GameObject bulletClone;
 				bulletClone = Instantiate (bullet, shootPointRight.transform.position, shootPointRight.transform.rotation) as GameObject;
 				bulletClone.GetComponent<Rigidbody2D> ().velocity = direction * bulletSpeed;
-
+				Debug.Log ("Attacking");
 				bulletTimer = 0;
 
 			}

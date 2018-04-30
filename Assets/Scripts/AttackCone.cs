@@ -16,6 +16,8 @@ public class AttackCone : MonoBehaviour {
 			if (isLeft) {
 				turretAI.attack (false);
 			} else {
+				Debug.Log ("Attacking");
+
 				turretAI.attack (true);
 			}
 		}
