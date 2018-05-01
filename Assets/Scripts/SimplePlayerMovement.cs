@@ -173,6 +173,10 @@ public class SimplePlayerMovement : MonoBehaviour
             items.Add(col.gameObject.name);
             Destroy(col.gameObject);
         }
+        else if (col.gameObject.tag == "LockedDoor")
+        {
+            col.gameObject.GetComponent<LockedDoor>().OpenDoor(items);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D col)

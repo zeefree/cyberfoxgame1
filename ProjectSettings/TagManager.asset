@@ -14,6 +14,7 @@ TagManager:
   - Stairs
   - VGlass
   - Pickup
+  - LockedDoor
   layers:
   - Default
   - TransparentFX
