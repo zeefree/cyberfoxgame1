@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlassWall : MonoBehaviour {
     public ParticleSystem explosion;
 
-    void Explode()
+    public void Explode()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);

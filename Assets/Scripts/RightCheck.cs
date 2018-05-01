@@ -28,7 +28,7 @@ public class RightCheck : MonoBehaviour
         }
         else if (col.gameObject.tag == "VGlass" && player.state == SimplePlayerMovement.PlayerState.InAir)
         {
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<GlassWall>().Explode();
         }
     }
 
