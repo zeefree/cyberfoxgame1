@@ -169,12 +169,13 @@ public class SimplePlayerMovement : MonoBehaviour
         }
     }
 
+	/*
     public void OnTriggerEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Pickup")
         {
             items.Add(col.gameObject.name);
         }
-    }
+    }*/
 
 }
