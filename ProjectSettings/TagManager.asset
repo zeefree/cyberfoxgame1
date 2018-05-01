@@ -57,3 +57,6 @@ TagManager:
   - name: Layer2
     uniqueID: 4164141889
     locked: 0
+  - name: Foreground
+    uniqueID: 399978207
+    locked: 0
