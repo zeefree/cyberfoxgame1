@@ -26,7 +26,7 @@ public class SimplePlayerMovement : MonoBehaviour
     private Animator anim;
     private Rigidbody2D physicsBody;
     private GameObject hangingObject;
-    private List<string> items;
+    private HashSet<string> items = new HashSet<string>();
 
 
     // Use this for initialization
@@ -36,7 +36,6 @@ public class SimplePlayerMovement : MonoBehaviour
         physicsBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         inputHandler = GameObject.Find("Canvas");
-        items = new List<string>();
     }
 
     // Update is called once per frame
@@ -167,15 +166,24 @@ public class SimplePlayerMovement : MonoBehaviour
         {
             Destroy(col.gameObject);
         }
+        else if (col.gameObject.tag == "Pickup")
+        {
+            // Add the object to the items hashset
+            // Check if player has an object with items.Contains("item");
+            items.Add(col.gameObject.name);
+            Destroy(col.gameObject);
+        }
     }
 
-	/*
-    public void OnTriggerEnter2D(Collision2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Pickup")
         {
+            // Add the object to the items hashset
+            // Check if player has an object with items.Contains("item");
             items.Add(col.gameObject.name);
+            Destroy(col.gameObject);
         }
-    }*/
+    }
 
 }
