@@ -35,7 +35,7 @@ public class TurretAI : MonoBehaviour {
 	void Start () {
 		currentHealth = maxHealth;	
 		wakeRange = 26;
-		shootInterval = 0.2f;
+		shootInterval = 0.5f;
 
 	}
 	
