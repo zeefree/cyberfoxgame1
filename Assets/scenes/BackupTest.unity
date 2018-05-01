@@ -2845,8 +2845,9 @@ GameObject:
   - component: {fileID: 1716365408}
   - component: {fileID: 1716365407}
   - component: {fileID: 1716365406}
+  - component: {fileID: 1716365409}
   m_Layer: 0
-  m_Name: WallL
+  m_Name: GlassWall
   m_TagString: VGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2934,6 +2935,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1716365409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1716365405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08958fcaa81308f4eb938db17b2d59bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 198435702137654378, guid: 8de6b5d11751311409b9772545ac020f,
+    type: 2}
 --- !u!1 &1747992298
 GameObject:
   m_ObjectHideFlags: 0
