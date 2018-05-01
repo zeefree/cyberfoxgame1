@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GuardMovement : MonoBehaviour {
+
+public class GuardIdle : MonoBehaviour {
 
 	public float speed;
 	public float currentHealth;
@@ -22,6 +23,7 @@ public class GuardMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		/*
 		transform.Translate (Vector2.right * speed * Time.deltaTime);
 
 		RaycastHit2D groundInfo = Physics2D.Raycast (groundDetection.position, Vector2.down, 2f);
@@ -33,7 +35,7 @@ public class GuardMovement : MonoBehaviour {
 				transform.eulerAngles = new Vector3 (0, 0, 0);
 				movingRight = true;
 			}
-		}
+		}*/
 
 		anim.SetFloat ("Speed", speed);
 

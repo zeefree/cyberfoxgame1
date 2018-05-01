@@ -1,0 +1,892 @@
+fileFormatVersion: 2
+guid: 10dba9ae3789acf42988293280537c79
+timeCreated: 1525197856
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PC Computer - Heroes of Might and Magic 2 - Skeleton_0
+    21300002: PC Computer - Heroes of Might and Magic 2 - Skeleton_1
+    21300004: PC Computer - Heroes of Might and Magic 2 - Skeleton_2
+    21300006: PC Computer - Heroes of Might and Magic 2 - Skeleton_3
+    21300008: PC Computer - Heroes of Might and Magic 2 - Skeleton_4
+    21300010: PC Computer - Heroes of Might and Magic 2 - Skeleton_5
+    21300012: PC Computer - Heroes of Might and Magic 2 - Skeleton_6
+    21300014: PC Computer - Heroes of Might and Magic 2 - Skeleton_7
+    21300016: PC Computer - Heroes of Might and Magic 2 - Skeleton_8
+    21300018: PC Computer - Heroes of Might and Magic 2 - Skeleton_9
+    21300020: PC Computer - Heroes of Might and Magic 2 - Skeleton_10
+    21300022: PC Computer - Heroes of Might and Magic 2 - Skeleton_11
+    21300024: PC Computer - Heroes of Might and Magic 2 - Skeleton_12
+    21300026: PC Computer - Heroes of Might and Magic 2 - Skeleton_13
+    21300028: PC Computer - Heroes of Might and Magic 2 - Skeleton_14
+    21300030: PC Computer - Heroes of Might and Magic 2 - Skeleton_15
+    21300032: PC Computer - Heroes of Might and Magic 2 - Skeleton_16
+    21300034: PC Computer - Heroes of Might and Magic 2 - Skeleton_17
+    21300036: PC Computer - Heroes of Might and Magic 2 - Skeleton_18
+    21300038: PC Computer - Heroes of Might and Magic 2 - Skeleton_19
+    21300040: PC Computer - Heroes of Might and Magic 2 - Skeleton_20
+    21300042: PC Computer - Heroes of Might and Magic 2 - Skeleton_21
+    21300044: PC Computer - Heroes of Might and Magic 2 - Skeleton_22
+    21300046: PC Computer - Heroes of Might and Magic 2 - Skeleton_23
+    21300048: PC Computer - Heroes of Might and Magic 2 - Skeleton_24
+    21300050: PC Computer - Heroes of Might and Magic 2 - Skeleton_25
+    21300052: PC Computer - Heroes of Might and Magic 2 - Skeleton_26
+    21300054: PC Computer - Heroes of Might and Magic 2 - Skeleton_27
+    21300056: PC Computer - Heroes of Might and Magic 2 - Skeleton_28
+    21300058: PC Computer - Heroes of Might and Magic 2 - Skeleton_29
+    21300060: PC Computer - Heroes of Might and Magic 2 - Skeleton_30
+    21300062: PC Computer - Heroes of Might and Magic 2 - Skeleton_31
+    21300064: PC Computer - Heroes of Might and Magic 2 - Skeleton_32
+    21300066: PC Computer - Heroes of Might and Magic 2 - Skeleton_33
+    21300068: PC Computer - Heroes of Might and Magic 2 - Skeleton_34
+    21300070: PC Computer - Heroes of Might and Magic 2 - Skeleton_35
+    21300072: PC Computer - Heroes of Might and Magic 2 - Skeleton_36
+    21300074: PC Computer - Heroes of Might and Magic 2 - Skeleton_37
+    21300076: PC Computer - Heroes of Might and Magic 2 - Skeleton_38
+    21300078: PC Computer - Heroes of Might and Magic 2 - Skeleton_39
+    21300080: PC Computer - Heroes of Might and Magic 2 - Skeleton_40
+    21300082: PC Computer - Heroes of Might and Magic 2 - Skeleton_41
+    21300084: PC Computer - Heroes of Might and Magic 2 - Skeleton_42
+    21300086: PC Computer - Heroes of Might and Magic 2 - Skeleton_43
+    21300088: PC Computer - Heroes of Might and Magic 2 - Skeleton_44
+    21300090: PC Computer - Heroes of Might and Magic 2 - Skeleton_45
+    21300092: PC Computer - Heroes of Might and Magic 2 - Skeleton_46
+    21300094: PC Computer - Heroes of Might and Magic 2 - Skeleton_47
+    21300096: PC Computer - Heroes of Might and Magic 2 - Skeleton_48
+    21300098: PC Computer - Heroes of Might and Magic 2 - Skeleton_49
+    21300100: PC Computer - Heroes of Might and Magic 2 - Skeleton_50
+    21300102: PC Computer - Heroes of Might and Magic 2 - Skeleton_51
+    21300104: PC Computer - Heroes of Might and Magic 2 - Skeleton_52
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 10
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 370
+        width: 40
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 370
+        width: 38
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_2
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 370
+        width: 38
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_3
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 370
+        width: 40
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_4
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 370
+        width: 40
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_5
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 407
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_6
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 407
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 407
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_8
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 407
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_9
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 407
+        width: 35
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_10
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 407
+        width: 35
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_11
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 373
+        width: 46
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_12
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 373
+        width: 46
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_13
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 292
+        width: 43
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_14
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 292
+        width: 42
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 292
+        width: 38
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_16
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 292
+        width: 49
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_17
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 292
+        width: 41
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_18
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 292
+        width: 43
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_19
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 292
+        width: 47
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_20
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 292
+        width: 42
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_21
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 292
+        width: 37
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_22
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 196
+        width: 53
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_23
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 196
+        width: 59
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_24
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 196
+        width: 85
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_25
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 196
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_26
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 196
+        width: 58
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_27
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 195
+        width: 50
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_28
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 195
+        width: 46
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_29
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 196
+        width: 42
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_30
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 97
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_31
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 97
+        width: 61
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_32
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 97
+        width: 59
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_33
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 97
+        width: 57
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_34
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 97
+        width: 38
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_35
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 97
+        width: 66
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_36
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 97
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_37
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 97
+        width: 47
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_38
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 49
+        width: 15
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_39
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 61
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_40
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 11
+        width: 56
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_41
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 35
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_42
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 45
+        width: 27
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_43
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 11
+        width: 49
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_44
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 42
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_45
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 11
+        width: 42
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_46
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 11
+        width: 90
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_47
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 20
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_48
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 16
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_49
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 11
+        width: 41
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_50
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 11
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_51
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 11
+        width: 42
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PC Computer - Heroes of Might and Magic 2 - Skeleton_52
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 11
+        width: 44
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -15,6 +15,7 @@ TagManager:
   - VGlass
   - Pickup
   - LockedDoor
+  - Enemy
   layers:
   - Default
   - TransparentFX
