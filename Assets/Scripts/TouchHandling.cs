@@ -231,31 +231,55 @@ public class TouchHandling : MonoBehaviour
 
 #if UNITY_EDITOR
 
-		if (Input.GetMouseButton(0))
-		{
-			//Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-			var s = player.GetComponent<SimplePlayerMovement>();
+        if (Input.GetMouseButton(0))
+        {
+            //Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            var s = player.GetComponent<SimplePlayerMovement>();
 
-			//Chase's new lines begin
-			anim = player.GetComponent<Animator>();
-			grounded = true;
-			anim.SetBool ("Grounded", grounded);
-			anim.SetFloat ("Speed", Mathf.Abs(s.xAxis * s.speed));
-			if ((s.xAxis * s.speed)  < -0.1f) {
+            //Chase's new lines begin
+            anim = player.GetComponent<Animator>();
+            grounded = true;
+            anim.SetBool("Grounded", grounded);
+            anim.SetFloat("Speed", Mathf.Abs(s.xAxis * s.speed));
+            if ((s.xAxis * s.speed) < -0.1f)
+            {
                 //player.transform.localScale =  new Vector3 (-2, 2, 1);
-		       player.GetComponent<SpriteRenderer>().flipX = true;
-			}
+                player.GetComponent<SpriteRenderer>().flipX = true;
+            }
 
-			if ((s.xAxis * s.speed) > 0.1f) {
-               //player.transform.localScale =  new Vector3 (2, 2, 1);
+            if ((s.xAxis * s.speed) > 0.1f)
+            {
+                //player.transform.localScale =  new Vector3 (2, 2, 1);
                 player.GetComponent<SpriteRenderer>().flipX = false;
-			}
-			//Chase's new lines ens
-		}
-		else
-		{
-			state = TouchState.None;
-		}
+            }
+            //Chase's new lines ens
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            state = TouchState.None;
+            touchPoints[1] = Input.mousePosition;
+
+            float point_dif = (touchPoints[0].y - touchPoints[1].y); //take the differnce between the start point and our end point
+
+            if (Mathf.Abs(point_dif) >= dragDistance)
+            {
+
+                Player the_player = player.GetComponent<Player>();
+                //Now it should be a swipe
+                if (point_dif < 0)
+                {
+                    the_player.stair_direction = 'u';
+                }
+                else if (point_dif > 0)
+                {
+                    the_player.stair_direction = 'd';
+                }
+            }
+        }
+        else
+        {
+            state = TouchState.None;
+        }
 
 #endif
 
