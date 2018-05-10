@@ -39,6 +39,10 @@ public class TouchHandling : MonoBehaviour
         "Ceiling"
     };
 
+    public float zoomSpeed = 0.1f;
+    public float zoomInCap = 5f;
+    public float zoomOutCap = 40f;
+    public Camera camera;
     private int touchInputMask;
     public TouchState state;
     private Vector2[] touchPoints;
@@ -176,6 +180,7 @@ public class TouchHandling : MonoBehaviour
 			if (touch.phase == TouchPhase.Began) {
 				state = TouchState.None;
                 hideArc();
+                
 				break;
 
 			// Else if you end the Touch get the endpoint and make the leap
@@ -226,31 +231,55 @@ public class TouchHandling : MonoBehaviour
 
 #if UNITY_EDITOR
 
-		if (Input.GetMouseButton(0))
-		{
-			//Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-			var s = player.GetComponent<SimplePlayerMovement>();
+        if (Input.GetMouseButton(0))
+        {
+            //Vector2 touch = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            var s = player.GetComponent<SimplePlayerMovement>();
 
-			//Chase's new lines begin
-			anim = player.GetComponent<Animator>();
-			grounded = true;
-			anim.SetBool ("Grounded", grounded);
-			anim.SetFloat ("Speed", Mathf.Abs(s.xAxis * s.speed));
-			if ((s.xAxis * s.speed)  < -0.1f) {
+            //Chase's new lines begin
+            anim = player.GetComponent<Animator>();
+            grounded = true;
+            anim.SetBool("Grounded", grounded);
+            anim.SetFloat("Speed", Mathf.Abs(s.xAxis * s.speed));
+            if ((s.xAxis * s.speed) < -0.1f)
+            {
                 //player.transform.localScale =  new Vector3 (-2, 2, 1);
-		       player.GetComponent<SpriteRenderer>().flipX = true;
-			}
+                player.GetComponent<SpriteRenderer>().flipX = true;
+            }
 
-			if ((s.xAxis * s.speed) > 0.1f) {
-               //player.transform.localScale =  new Vector3 (2, 2, 1);
+            if ((s.xAxis * s.speed) > 0.1f)
+            {
+                //player.transform.localScale =  new Vector3 (2, 2, 1);
                 player.GetComponent<SpriteRenderer>().flipX = false;
-			}
-			//Chase's new lines ens
-		}
-		else
-		{
-			state = TouchState.None;
-		}
+            }
+            //Chase's new lines ens
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            state = TouchState.None;
+            touchPoints[1] = Input.mousePosition;
+
+            float point_dif = (touchPoints[0].y - touchPoints[1].y); //take the differnce between the start point and our end point
+
+            if (Mathf.Abs(point_dif) >= dragDistance)
+            {
+
+                Player the_player = player.GetComponent<Player>();
+                //Now it should be a swipe
+                if (point_dif < 0)
+                {
+                    the_player.stair_direction = 'u';
+                }
+                else if (point_dif > 0)
+                {
+                    the_player.stair_direction = 'd';
+                }
+            }
+        }
+        else
+        {
+            state = TouchState.None;
+        }
 
 #endif
 
@@ -361,11 +390,44 @@ public class TouchHandling : MonoBehaviour
     {
         stateText.GetComponent<Text>().text = "Camera";
 
-        for (int i = 0; i < Input.touchCount && Input.touchCount == 2; i++)
+
+
+        if (Input.touchCount == 2)
         {
-            Touch touch = Input.touches[i];
-            touchPoints[i] = touch.position;
+            //Store the two touches
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+            //Get prvious positions
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            //Get magintudes of those differneces
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            camera.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
+
+
+            camera.orthographicSize = Mathf.Max(camera.orthographicSize, zoomInCap);
+          
+            if(camera.orthographicSize >= zoomOutCap)
+            {
+                camera.orthographicSize = Mathf.Min(camera.orthographicSize, zoomOutCap);
+            }
         }
+
+        for (int i = 0; i < Input.touchCount && Input.touchCount == 2; i++)
+            {
+                Touch touch = Input.touches[i];
+                touchPoints[i] = touch.position;
+            }
+
+
+        
+     
+
 
         // Go back to None State when you don't have exactly two fingers touching
         if (Input.touchCount != 2)
@@ -382,7 +444,7 @@ public class TouchHandling : MonoBehaviour
         state = TouchState.None;
         touchInputMask = 1 << LayerMask.NameToLayer("UI");
         touchPoints = new Vector2[] { Vector2.zero, Vector2.zero };
-        cameraActivateDist = (float)Screen.width / 8.0f;
+        cameraActivateDist = (float)Screen.width / 2.5f;
         lar = player.GetComponentInChildren<LaunchArcRenderer>();
         dragDistance = 200f;
     }
@@ -401,7 +463,10 @@ public class TouchHandling : MonoBehaviour
         //anim = player.GetComponent<Animator>();
         //anim.SetFloat ("Speed", Mathf.Abs(s.xAxis * s.speed));
 
-        switch (state)
+    
+
+
+            switch (state)
         {
             case TouchState.None:
                 NoneState();

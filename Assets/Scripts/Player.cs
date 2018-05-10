@@ -23,9 +23,11 @@ public class Player : MonoBehaviour {
 	public Image healthbar;
 	public GameObject gameobject;
 
+	public AudioSource audioSrc;
+
 	void Start () {
 		//rb2d = gameObject.GetComponent<Rigidbody2D> ();
-
+		audioSrc = GetComponent<AudioSource>();
 		anim = gameObject.GetComponent<Animator> ();
 		gameobject = GameObject.FindGameObjectWithTag ("CurrentHealth");
 
@@ -66,7 +68,9 @@ public class Player : MonoBehaviour {
 
 	void Die() {
 		//restarts hopefully?
+		audioSrc.Play();
 		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);﻿
+
 	}
 
 	public void Damage(int dmg) {

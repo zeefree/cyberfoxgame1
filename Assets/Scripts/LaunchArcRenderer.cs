@@ -23,6 +23,7 @@ public class LaunchArcRenderer : MonoBehaviour {
         jumpFactor = GetComponentInParent<SimplePlayerMovement>().jumpFactor;
         maxJump = GetComponentInParent<SimplePlayerMovement>().maxJump;
 		rb2d = GetComponentInParent<Rigidbody2D>();
+        lr.sortingLayerName = "Foreground";
     }
 
     // This makes it change the arc whenever you change settings in inspector

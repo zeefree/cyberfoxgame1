@@ -20,14 +20,21 @@ public class RightCheck : MonoBehaviour
     {
         if (col.gameObject.tag == "Geometry")
         {
+            /*
             player.state = SimplePlayerMovement.PlayerState.HangingWallR;
             rb2d.velocity = Vector2.zero;
             rb2d.gravityScale = 0;
 			anim.SetBool ("Grounded", false);
 			anim.SetBool ("WallClimbing", true);
+            */
+        }
+        else if (col.gameObject.tag == "VGlass" && player.state == SimplePlayerMovement.PlayerState.InAir)
+        {
+                col.gameObject.GetComponent<GlassWall>().Explode();
         }
     }
 
+    
     void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.tag == "Geometry")
@@ -40,9 +47,11 @@ public class RightCheck : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
+        /*
         if (col.gameObject.tag == "Geometry")
         {
             player.state = SimplePlayerMovement.PlayerState.HangingWallR;
         }
+        */
     }
 }
