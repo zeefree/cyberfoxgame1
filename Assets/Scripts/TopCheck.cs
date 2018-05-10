@@ -20,6 +20,7 @@ public class TopCheck : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        /*
         if (col.gameObject.tag == "Geometry")
         {
             player.state = SimplePlayerMovement.PlayerState.HangingCeiling;
@@ -29,6 +30,7 @@ public class TopCheck : MonoBehaviour {
 			anim.SetBool("Grounded", true);
 			spriRend.flipY = true;
         }
+        */
     }
 
     void OnTriggerExit2D(Collider2D col)
@@ -44,9 +46,11 @@ public class TopCheck : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D col)
     {
+        /*
         if (col.gameObject.tag == "Geometry")
         {
             player.state = SimplePlayerMovement.PlayerState.HangingCeiling;
         }
+        */
     }
 }

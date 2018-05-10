@@ -27,6 +27,7 @@ public class SimplePlayerMovement : MonoBehaviour
     private Rigidbody2D physicsBody;
     private GameObject hangingObject;
     private HashSet<string> items = new HashSet<string>();
+    private Collider2D pcol;
 
 
     // Use this for initialization
@@ -36,6 +37,7 @@ public class SimplePlayerMovement : MonoBehaviour
         physicsBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         inputHandler = GameObject.Find("Canvas");
+        pcol = gameObject.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -47,6 +49,8 @@ public class SimplePlayerMovement : MonoBehaviour
         if (edX != 0)
             physicsBody.velocity = new Vector2(edX * speed, physicsBody.velocity.y);
 #endif
+        if (physicsBody.velocity.y == 0 && state == PlayerState.InAir)
+            state = PlayerState.Ground;
             
         Move();
     }
@@ -56,6 +60,7 @@ public class SimplePlayerMovement : MonoBehaviour
     {
         float thrust = Vector2.Distance(start, end) * jumpFactor;
         thrust = Mathf.Clamp(thrust, 0.0f, maxJump);
+        physicsBody.gravityScale = GRAVITY_SCALE;
 
         // These checks basically keep the player from jumping into the 
         // walls /ground and getting stuck
@@ -177,6 +182,67 @@ public class SimplePlayerMovement : MonoBehaviour
         {
             col.gameObject.GetComponent<LockedDoor>().OpenDoor(items);
         }
+        else if (col.gameObject.tag == "Geometry" && state == PlayerState.InAir)
+        {
+            physicsBody.velocity = Vector2.zero;
+            physicsBody.gravityScale = 0;
+            Bounds otherb = col.gameObject.GetComponent<Collider2D>().bounds;
+            Bounds pb = pcol.bounds;
+
+
+            if (pb.min.x - otherb.max.x > -1f)
+            {
+                state = PlayerState.HangingWallL;
+                //gameObject.transform.position = new Vector3(otherb.max.x, gameObject.transform.position.y, gameObject.transform.position.z);
+                anim.SetBool("Grounded", false);
+                anim.SetBool("WallClimbing", true);
+            }
+            else if (pb.max.x - otherb.min.x < 1f)
+            {
+                state = PlayerState.HangingWallR;
+                anim.SetBool("Grounded", false);
+                anim.SetBool("WallClimbing", true);
+            }
+            else if (pb.max.y - otherb.min.y < 1f)
+            {
+                state = PlayerState.HangingCeiling;
+                anim.SetBool("Grounded", true);
+                gameObject.GetComponent<SpriteRenderer>().flipY = true;
+            }
+            else if (pb.min.y - otherb.max.y > -1f)
+            {
+                anim.SetBool("Grounded", true);
+                state = PlayerState.Ground;
+                physicsBody.gravityScale = GRAVITY_SCALE;
+            }
+        }/*
+        else if (col.gameObject.tag == "Geometry" && (state == PlayerState.HangingWallL || state == PlayerState.HangingWallR || state == PlayerState.HangingCeiling))
+        {
+            physicsBody.velocity = Vector2.zero;
+            physicsBody.gravityScale = 0;
+            Bounds otherb = col.gameObject.GetComponent<Collider2D>().bounds;
+            Bounds pb = pcol.bounds;
+
+
+            if (pb.min.x - otherb.max.x > -1f)
+            {
+                state = PlayerState.HangingWallL;
+                anim.SetBool("Grounded", false);
+                anim.SetBool("WallClimbing", true);
+            }
+            else if (pb.max.x - otherb.min.x < 1f)
+            {
+                state = PlayerState.HangingWallR;
+                anim.SetBool("Grounded", false);
+                anim.SetBool("WallClimbing", true);
+            }
+            else if (pb.max.y - otherb.min.y < 1f)
+            {
+                state = PlayerState.HangingCeiling;
+                anim.SetBool("Grounded", true);
+                gameObject.GetComponent<SpriteRenderer>().flipY = true;
+            }
+        }*/
     }
 
     public void OnTriggerEnter2D(Collider2D col)
